@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性: 必须写接口类的全限定名-->
+<mapper namespace="com.itheima.health.dao.OrderSettingDao">
+
+    <select id="findByDate"  resultType="OrderSetting">
+       select * from t_ordersetting where orderDate =#{orderDate}
+
+    </select>
+
+   <update id="updateByNumber" parameterType="OrderSetting">
+       update t_ordersetting set number =#{number} where orderDate=#{orderDate}
+   </update>
+
+    <insert id="add" parameterType="OrderSetting">
+    insert into    t_ordersetting (orderDate,number,reservations)
+    values(#{orderDate},#{number},#{reservations})
+
+    </insert>
+
+    <select id="getOrderSettingMonth" resultType="map" >
+    select cast(DATE_FORMAT(orderdate,'%d') as SIGNED) date,
+            number,
+            reservations
+        from t_ordersetting
+        where orderDate between #{startDate} and #{endDate}
+
+    </select>
+
+    <update id="editReservationsByOrderDate" parameterType="string" >
+
+        update t_ordersetting set reservations = reservations +1 where orderDate = #{orderDate} and reservations &lt; number
+    </update>
+</mapper>

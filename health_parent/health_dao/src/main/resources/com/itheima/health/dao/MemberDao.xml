@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性: 必须写接口类的全限定名-->
+<mapper namespace="com.itheima.health.dao.MemberDao">
+
+    <select id="findByTelephone" resultType="Member">
+  select * from t_member where phoneNumber=#{telephone}
+    </select>
+
+    <insert id="addMember" parameterType="Member" keyProperty="id" useGeneratedKeys="true">
+       insert into t_member(fileNumber,name,sex,idCard,phoneNumber,regTime,password,email,birthday,remark)
+        values (#{fileNumber},#{name},#{sex},#{idCard},#{phoneNumber},#{regTime},#{password},#{email},#{birthday},#{remark})
+
+    </insert>
+
+    <select id="findMemberCountByDate" resultType="integer" parameterType="string">
+
+       select count(1) from t_member where regTime &lt;= #{month}
+
+    </select>
+
+    <select id="findAllMemberCount" resultType="int">
+        select count(1) from t_member
+
+    </select>
+
+    <select id="findMemberCountByToDay" resultType="int">
+
+       select count(1) from t_member where regTime =#{today}
+    </select>
+
+    <select id="findMemberCountByThisWeek" resultType="int">
+      select count(1) from t_member where regTime &gt;= #{monday}
+
+    </select>
+
+    <select id="findMemberCountByThiMonth" resultType="int">
+
+    select count(1) from     t_member where regTime &gt;= #{oneday}
+    </select>
+</mapper>

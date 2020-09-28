@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性: 必须写接口类的全限定名-->
+<mapper namespace="com.itheima.health.dao.OrderDao">
+    <insert id="addOrder" keyProperty="id" useGeneratedKeys="true">
+
+    insert into t_order(member_id,orderDate,orderType,orderStatus,setmeal_id)
+        values (#{memberId},#{orderDate},#{orderType},#{orderStatus},#{setmealId})
+
+    </insert>
+
+    <select id="findOrderByData" resultType="Order">
+
+  select * from t_order where member_id=#{member} and orderDate=#{orderDate} and setmeal_id =#{setmealId}
+    </select>
+
+    <select id="findById" resultType="map">
+
+       select
+            m.name member, s.name setmeal,DATE_FORMAT(o.orderDate,'%Y-%m-%d') orderDate,o.orderType
+        From
+        t_member m, t_order o, t_setmeal s
+        where m.id=o.member_id and o.setmeal_id=s.id
+        and o.id=#{id}
+
+    </select>
+
+    <select id="findOrderCountByDate" resultType="int">
+      select count(1) from t_order where orderDate =#{date}
+
+    </select>
+
+    <select id="findOrderVisitsNumberByDate" resultType="int">
+        select count(1) from t_order where orderDate=#{date} and orderStatus ='已到诊'
+    </select>
+
+    <select id="findOrderByThisWeek" resultType="int">
+        select count(1) from t_order where orderDate between #{monday} and #{sunday}
+    </select>
+
+    <select id="findOrderVisitsNumberByThisWeek" resultType="int">
+
+      select count(1) from t_order where orderDate &gt;= #{monday} and orderStatus ='已到诊'
+    </select>
+
+    <select id="findOrderCountByMonth" resultType="int">
+
+    select count(1) from t_order where    orderDate  between #{startDay} and #{endDay}
+    </select>
+
+    <select id="findOrderVisitsNumberByThisMonth" resultType="int">
+        select count(1) from t_order where    orderDate &gt;= #{oneday} and orderStatus ='已到诊'
+    </select>
+
+    <select id="findHotSetmeal"  resultType="map">
+    select s.name,t.setmeal_count,s.remark, t.setmeal_count/t1.total proportion  from
+(select setmeal_id ,count(1) setmeal_count from t_order  group by setmeal_id) t ,
+(select count(1) total from t_order) t1 ,t_setmeal s
+ where s.id=t.setmeal_id ORDER BY t.setmeal_count desc limit 0,4
+
+    </select>
+</mapper>

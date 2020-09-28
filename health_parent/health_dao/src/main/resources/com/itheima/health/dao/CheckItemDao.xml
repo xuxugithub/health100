@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性: 必须写接口类的全限定名-->
+<mapper namespace="com.itheima.health.dao.CheckItemDao">
+
+    <select id="findAll" resultType="CheckItem">
+    select * from t_checkitem
+    </select>
+
+    <select id="findByPage" resultType="CheckItem" parameterType="string">
+        select * from t_checkitem
+        <where>
+            <if test="value !=null and value.length>0">
+                name like #{queryString} or code like #{queryString}
+            </if>
+        </where>
+
+    </select>
+
+    <insert id="add" parameterType="CheckItem">
+     insert into t_checkitem(code,name,sex,age,price,type,remark,attention)
+     values(#{code},#{name},#{sex} ,#{age},#{price},#{type},#{remark},#{attention})
+
+    </insert>
+
+    <select id="findById" resultType="int" parameterType="int">
+       select count(1) from t_checkgroup_checkitem where checkitem_id=#{id}
+
+    </select>
+    <delete id="delete">
+        delete from t_checkitem where id =#{id}
+
+    </delete>
+
+    <select id="edit" resultType="CheckItem" parameterType="int">
+
+       select * from t_checkitem where id=#{id}
+    </select>
+
+    <update id="update" parameterType="CheckItem">
+
+       update t_checkitem set
+       code=#{code},
+        name=#{name},
+        sex=#{sex},
+        age=#{age},
+        price=#{price},
+        type=#{type},
+        remark=#{remark},
+        attention=#{attention}
+    where id=#{id}
+
+    </update>
+    <select id="findCheckItemListById" resultType="CheckItem">
+        select * from t_checkitem where id in(select checkitem_id from t_checkgroup_checkitem where checkgroup_id =#{id})
+
+    </select>
+
+</mapper>
