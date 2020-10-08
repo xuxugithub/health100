@@ -6,6 +6,7 @@ import com.itheima.health.entity.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -42,14 +43,14 @@ public class HealthExceptionAdvice {
      * @param
      * @return
      */
-//    @ExceptionHandler(BadCredentialsException.class)
-//    public Result handBadCredentialsException(BadCredentialsException he){
-//        return handleUserPassword();
-//    }
-//
-//    private Result handleUserPassword(){
-//        return new Result(false, "用户名或密码错误");
-//    }
+    @ExceptionHandler(BadCredentialsException.class)
+    public Result handBadCredentialsException(BadCredentialsException he){
+        return handleUserPassword();
+    }
+
+    private Result handleUserPassword(){
+        return new Result(false, "用户名或密码错误");
+    }
 
     @ExceptionHandler(AccessDeniedException.class)
     public Result handleAccessDeniedException(AccessDeniedException e){

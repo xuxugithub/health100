@@ -20,5 +20,5 @@ public interface OrderService {
      * @Date 2020/9/25 21:56
      * @param: id
      **/
-    Map<String, String> findById(Integer id);
+    Map<String, Object> findById(Integer id);
 }

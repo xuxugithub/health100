@@ -35,4 +35,25 @@
         </collection>
     </resultMap>
 
+    <select id="findAllMenu" resultType="map">
+       select m.id ,m.name title,m.linkUrl,m.path,m.icon,m.parentMenuId
+          from t_user u
+          left join t_user_role ur on u.id=ur.user_id
+          left join t_role r on ur.role_id=r.id
+          left join t_role_menu rm on r.id=rm.role_id
+         left join t_menu m on m.id=rm.menu_id
+          where u.username=#{username}  and m.parentMenuId is null
+
+    </select>
+    <select id="findAllSonMenu" resultType="map">
+      select m.id ,m.name title,m.linkUrl,m.path,m.icon,m.parentMenuId
+          from t_user u
+          left join t_user_role ur on u.id=ur.user_id
+          left join t_role r on ur.role_id=r.id
+          left join t_role_menu rm on r.id=rm.role_id
+         left join t_menu m on m.id=rm.menu_id
+          where u.username=#{username}  and m.parentMenuId=#{id}
+
+    </select>
+
 </mapper>

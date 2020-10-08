@@ -59,4 +59,8 @@
     <import resource="classpath:spring-redis.xml"/>
     <!--导入security配置-->
     <import resource="classpath:spring-security.xml"/>
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+    </bean>
+    <mvc:annotation-driven validator="validator"/>
 </beans>

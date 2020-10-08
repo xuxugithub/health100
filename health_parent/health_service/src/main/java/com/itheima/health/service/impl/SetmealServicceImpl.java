@@ -157,7 +157,7 @@ public class SetmealServicceImpl implements SetmealServicce {
         int cnt = setmealDao.findBySetmealId(id);
         //如果有,则抛异常
         if (cnt > 0) {
-            throw new RuntimeException("该套餐已被使用,不能删除");
+            throw new HealthException("该套餐已被使用,不能删除");
         }
         //如果没有,删除套餐组关系表
         setmealDao.deleteSetMealCheckGroupById(id);

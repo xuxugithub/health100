@@ -195,7 +195,17 @@
                             "children":[]
                         }
                     ]
-                }
+                },
+                {
+                    "path": "/6",
+                    "title": "系统设置",
+                    "icon":"fa-users",
+                    "children":[
+
+
+                    ]
+                },
+
             ]
         },
         //钩子函数
@@ -204,7 +214,8 @@
         axios.get("/user/getLoginUsername.do").then(response=>{
              if (response.data.flag){
 
-                 this.loginUsername=response.data.data;
+                 this.loginUsername=response.data.data.username;
+                  this.menuList=response.data.data.resultMap;
                 }else {
                  this.$message.error(response.data.message);
              }

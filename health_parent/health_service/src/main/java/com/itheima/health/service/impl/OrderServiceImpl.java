@@ -126,8 +126,8 @@ public class OrderServiceImpl implements OrderService {
      * @param: id
      **/
     @Override
-    public Map<String, String> findById(Integer id) {
-        Map<String, String> map= orderDao.findById(id);
+    public Map<String, Object> findById(Integer id) {
+        Map<String, Object> map= orderDao.findById(id);
         return map;
     }
 }

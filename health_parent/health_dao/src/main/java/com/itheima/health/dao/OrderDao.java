@@ -20,7 +20,7 @@ public interface OrderDao {
      * @Date 2020/9/25 21:57
      * @param: id
      **/
-    Map<String, String> findById(Integer id);
+    Map<String, Object> findById(Integer id);
 
     /**今日预约
      * @Date 2020/9/28 20:35

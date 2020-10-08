@@ -19,7 +19,7 @@
     <select id="findById" resultType="map">
 
        select
-            m.name member, s.name setmeal,DATE_FORMAT(o.orderDate,'%Y-%m-%d') orderDate,o.orderType
+            o.setmeal_id,m.name member, s.name setmeal,DATE_FORMAT(o.orderDate,'%Y-%m-%d') orderDate,o.orderType
         From
         t_member m, t_order o, t_setmeal s
         where m.id=o.member_id and o.setmeal_id=s.id

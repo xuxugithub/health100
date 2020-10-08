@@ -18,9 +18,7 @@
         <module>health_jobs</module>
         <module>health_mobile</module>
         <module>springsecurity_demo</module>
-
     </modules>
-
     <!-- 集中定义依赖版本号 -->
     <properties>
         <junit.version>4.12</junit.version>
@@ -43,10 +41,48 @@
         <aliyun-dysmsapi.version>1.0.0</aliyun-dysmsapi.version>
         <aliyun-core.version>3.3.1</aliyun-core.version>
         <freemarker>2.3.23</freemarker>
+        <jasperreports>6.8.0</jasperreports>
+        <validator>6.0.0.Final</validator>
+        <itextpdf.version>5.2.0</itextpdf.version>
+        <lowagie.version>2.1.7</lowagie.version>
+        <alpha.version>1.0.0</alpha.version>
+        <spring.data.redis>2.1.6.RELEASE</spring.data.redis>
     </properties>
     <!-- 依赖管理标签  必须加 -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${spring.data.redis}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${validator} </version>
+            </dependency>
+            <dependency>
+                <groupId>com.alpha</groupId>
+                <artifactId>itextasian</artifactId>
+                <version>${alpha.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jasperreports</groupId>
+                <artifactId>jasperreports</artifactId>
+                <version>${jasperreports}</version>
+            </dependency>
+            <!--导入Itext报表-->
+            <dependency>
+                <groupId>com.lowagie</groupId>
+                <artifactId>itext</artifactId>
+                <version>${lowagie.version}</version>
+            </dependency>
+            <!-- 导入iText报表，支持中文 -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext-asian</artifactId>
+                <version>${itextpdf.version}</version>
+            </dependency>
             <!-- Spring -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -240,6 +276,7 @@
             <artifactId>aliyun-java-sdk-core</artifactId>
             <version>3.3.1</version>
         </dependency>
+
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-dysmsapi</artifactId>

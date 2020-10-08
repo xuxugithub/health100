@@ -7,7 +7,9 @@ public interface MessageConstant {
     static final String DELETE_CHECKITEM_FAIL = "删除检查项失败";
     static final String DELETE_CHECKITEM_SUCCESS = "删除检查项成功";
     static final String ADD_CHECKITEM_SUCCESS = "新增检查项成功";
+    static final String ADD_MENU_SUCCESS = "新增菜单成功";
     static final String ADD_CHECKITEM_FAIL = "新增检查项失败";
+    static final String ADD_MENU_FAIL = "新增菜单失败";
     static final String EDIT_CHECKITEM_FAIL = "编辑检查项失败";
     static final String EDIT_CHECKITEM_SUCCESS = "编辑检查项成功";
     static final String QUERY_CHECKITEM_SUCCESS = "查询检查项成功";
@@ -22,8 +24,15 @@ public interface MessageConstant {
     static final String DELETE_SETMEAL_FAIL = "删除套餐失败";
     static final String QUERY_CHECKGROUP_SUCCESS = "查询检查组成功";
     static final String QUERY_CHECKGROUP_FAIL = "查询检查组失败";
+    static final String QUERY_MENU_SUCCESS = "查询菜单成功";
+    static final String QUERY_MENU_FAIL = "查询菜单失败";
+    static final String DELETE_MENU_FAIL = "删除菜单失败";
+    static final String DELETE_MENU_SUCCESS = "删除菜单成功";
+    static final String EDIT_MENU_SUCCESS = "编辑菜单成功";
+
     static final String EDIT_CHECKGROUP_FAIL = "编辑检查组失败";
     static final String EDIT_CHECKGROUP_SUCCESS = "编辑检查组成功";
+
 
     static final String EDIT_SETMEAL_SUCCESS = "编辑套餐成功";
     static final String EDIT_SETMEAL_FAIL = "编辑套餐失败";
@@ -38,11 +47,23 @@ public interface MessageConstant {
     static final String ORDERSETTING_SUCCESS = "预约设置成功";
     static final String ORDERSETTING_FAIL = "预约设置失败";
     static final String ADD_MEMBER_FAIL = "新增会员失败";
+    static final String ADD_ROLE_FAIL = "新增角色失败";
     static final String ADD_MEMBER_SUCCESS = "新增会员成功";
+    static final String ADD_ROLE_SUCCESS = "新增角色成功";
+    static final String ADD_PERMISSION_SUCCESS = "新增权限成功";
+    static final String ADD_PERMISSION_FAIL = "新增权限失败";
+    static final String DELETE_PERMISSION_SUCCESS = "删除权限成功";
     static final String DELETE_MEMBER_FAIL = "删除会员失败";
+    static final String DELETE_ROLE_FAIL = "删除角色失败";
     static final String DELETE_MEMBER_SUCCESS = "删除会员成功";
+    static final String DELETE_ROLE_SUCCESS = "删除角色成功";
+
     static final String EDIT_MEMBER_FAIL = "编辑会员失败";
+    static final String EDIT_ROLE_FAIL = "编辑角色失败";
+    static final String EDIT_PERMISSION_FAIL = "编辑权限失败";
     static final String EDIT_MEMBER_SUCCESS = "编辑会员成功";
+    static final String EDIT_ROLE_SUCCESS = "编辑角色成功";
+    static final String EDIT_PERMISSION_SUCCESS = "编辑权限成功";
     static final String TELEPHONE_VALIDATECODE_NOTNULL = "手机号和验证码都不能为空";
     static final String LOGIN_SUCCESS = "登录成功";
     static final String VALIDATECODE_ERROR = "验证码输入错误";
@@ -71,8 +92,13 @@ public interface MessageConstant {
     static final String GET_BUSINESS_REPORT_SUCCESS = "获取运营统计数据成功";
     static final String GET_BUSINESS_REPORT_FAIL = "获取运营统计数据失败";
     static final String GET_SETMEAL_LIST_SUCCESS = "查询套餐列表数据成功";
+    static final String GET_ROLE_LIST_SUCCESS = "查询角色列表数据成功";
     static final String GET_SETMEAL_LIST_FAIL = "查询套餐列表数据失败";
+    static final String GET_PERMISSION_LIST_FAIL = "查询权限列表数据失败";
+    static final String GET_ROLE_LIST_FAIL = "查询角色列表数据失败";
+    static final String GET_PERMISSION_LIST_TRUE = "查询权限列表数据成功";
     static final String ORDERTYPE_WEI_XIN_ = "微信预约";
     static final String ORDERSTATUS_0_ = "未就诊";
+
 
 }
